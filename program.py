@@ -38,24 +38,29 @@ print(x.shape, x_train.shape, x_test.shape)
 
 #MODEL TRAINING
 
+#logistic regression
 model = LogisticRegression()
-
+#training the LogisticRegression model with training data 
 model.fit(x_train, y_train)
 
+#MODEL EVALUATION
+
+#accuracy on training data
 x_train_prediction = model.predict(x_train)
 training_data_accuracy = accuracy_score(x_train_prediction, y_train)
-
 print('Accuracy on Training Data: ', training_data_accuracy)
 
+#accuracy on test data
 x_test_prediction = model.predict(x_test)
 test_data_accuracy = accuracy_score(x_test_prediction, y_test)
-
 print('Accuracy on Test Data: ', test_data_accuracy)
 
+#BUILDING A PREDICTIVE SYSTEM
+
 input_data = (62, 0, 0, 140, 268, 0, 0, 160, 0, 3.6, 0, 2, 2)
-
+#change the input data to a numpy array
 input_data_as_numpy_array = np.array(input_data)
-
+#reshpe the numpy array as predicted for only on instance
 input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
 
 prediction = model.predict(input_data_reshaped)
@@ -65,3 +70,4 @@ if(prediction[0] == 0):
     print("The Person does not have a Heart Disease!")
 else:
     print("The Person has a Heart Disease!")
+    
